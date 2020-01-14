@@ -10,6 +10,15 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   payment.associate = function(models) {
     // associations can be defined here
+    payment.belongsTo(models.event,{
+        as: 'paymentEvent',
+        foreignKey : 'payment_event_id'
+    },
+    payment.belongsTo(models.user,{
+        as:'paymentUser',
+        foreignKey:'payment_creatby_id'
+    })
+    )
   };
   return payment;
 };

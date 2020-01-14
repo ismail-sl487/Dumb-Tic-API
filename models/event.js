@@ -5,9 +5,9 @@ module.exports = (sequelize, DataTypes) => {
     start_time: DataTypes.DATE,
     end_time: DataTypes.DATE,
     price: DataTypes.INTEGER,
-    description: DataTypes.STRING,
-    address: DataTypes.STRING,
-    urlmap: DataTypes.STRING,
+    description: DataTypes.TEXT,
+    address: DataTypes.TEXT,
+    urlmap: DataTypes.TEXT,
     image: DataTypes.STRING,
     category_id: DataTypes.INTEGER,
     createby_id: DataTypes.INTEGER,
@@ -22,7 +22,13 @@ module.exports = (sequelize, DataTypes) => {
     event.belongsTo (models.category,{
       as : 'categoryId',
       foreignKey : 'category_id'
+    },
+    event.hasMany(models.payment,{
+      as :'order_event',
+      foreignKey :'payment_event_id'
     })
+    
+    )
   
   )
   };
