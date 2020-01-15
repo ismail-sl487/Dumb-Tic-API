@@ -63,7 +63,7 @@ exports.store = (req, res) => {
         res.send({
             message: "success",
             event
-        })
+        }).catch(err => res.send(err))
     })
 }
 
