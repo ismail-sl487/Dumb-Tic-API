@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   event.associate = function(models) {
     // associations can be defined here
     event.belongsTo(models.user,{
-      as : 'createBy',
+      as : 'createdBy',
       foreignKey : 'createby_id'
   },
     event.belongsTo (models.category,{
