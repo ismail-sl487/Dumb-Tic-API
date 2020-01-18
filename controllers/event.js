@@ -116,4 +116,20 @@ exports.search=(req,res)=>{
 }
 
 
+exports.delete=(req,res)=>{
+
+    event.destroy(
+        {
+            where : 
+            {
+                id: req.params.id
+            }
+        }).then(event=>
+            {
+                res.send(event)
+            })
+        .catch(err=>res.send(err))
+}
+
+
 

@@ -40,6 +40,7 @@ app.group("/api/v1", (router) => {
     router.get('/categories', CategoriesController.index)  
     router.get('/category/:id/events', CategoriesController.events)  
     router.post('/category', CategoriesController.store)
+    router.delete('/category/:id/del', CategoriesController.del)  
   
     // ORDER API
     router.get('/order/:id',OrderBuyController.show)  

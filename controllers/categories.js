@@ -28,6 +28,18 @@ exports.events = (req, res) => {
 }
 
 
+exports.del= (req,res) => {
+    categories.destroy({ 
+
+        where: {id:req.params.id}}).then(category=>{
+        res.send({
+            message:"Sucess",
+            category
+        })
+    })
+}
+
+
 exports.store = (req, res) => {
     categories.create(req.body).then(category=> {
         res.send({
