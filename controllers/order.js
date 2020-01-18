@@ -64,5 +64,13 @@ exports.tiket=(req,res)=>{
 
 exports.showall=(req,res)=>{
 
-        payment.findAll().then(payment=>res.send(payment)).catch(err=>res.send(err))
+        payment.findAll({
+            include:
+            [
+                {
+                    model:event,
+                    as:'paymentEvent'
+                }
+            ]
+        }).then(payment=>res.send(payment)).catch(err=>res.send(err))
 }
