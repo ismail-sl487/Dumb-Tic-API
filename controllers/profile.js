@@ -5,8 +5,9 @@ const event = models.event
 exports.index = (req, res) => {
     profile.findAll({
         include: [{
+
             model: event,
-            as: "createdBy"
+            as:"createBy"
         }]
     }).then(profile=>res.send(profile)).catch((error) => res.status(400).send(error));
 }
