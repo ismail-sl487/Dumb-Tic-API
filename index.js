@@ -46,7 +46,8 @@ app.group("/api/v1", (router) => {
   
     // ORDER API
     router.get('/order/:id',OrderBuyController.show)  
-    router.post('/order',OrderBuyController.buy)     
+    router.post('/order',OrderBuyController.buy)   
+    router.get('/orders',OrderBuyController.showall)  
 
 
     // AUTH API

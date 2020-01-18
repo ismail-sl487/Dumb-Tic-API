@@ -59,3 +59,10 @@ exports.tiket=(req,res)=>{
         ]
     }).then(payment=>res.send(payment)).catch(err=>res.send(err))
 }
+
+// see database 
+
+exports.showall=(req,res)=>{
+
+        payment.findAll().then(payment=>res.send(payment)).catch(err=>res.send(err))
+}
