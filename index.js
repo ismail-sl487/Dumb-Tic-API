@@ -30,8 +30,10 @@ app.group("/api/v1", (router) => {
     // EVENT API
     router.post('/event',EventController.store)
     router.get('/event/:id',EventController.show) 
+    router.get('/eventall',EventController.all)
     router.get('/events/', EventController.index) 
     router.get('/search/:title',EventController.search) 
+    router.patch('/event/:id/edit',EventController.edit)
     
     //EVENT TOMOROW
     router.get('/tomorow',EventController.tomorrow)

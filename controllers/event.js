@@ -116,20 +116,33 @@ exports.search=(req,res)=>{
 }
 
 
-exports.delete=(req,res)=>{
+exports.edit=(req,res)=>{
 
-    event.destroy(
+    event.update(
+        req.body,
         {
+
             where : 
             {
                 id: req.params.id
             }
         }).then(event=>
             {
-                res.send(event)
+                res.send({
+                    message:'success edit',
+                    event
+                })
             })
         .catch(err=>res.send(err))
 }
 
+exports.all=(req,res)=>{
+
+    event.findAll().then(event=>
+
+        res.send(event)
+    )
+
+}
 
 
