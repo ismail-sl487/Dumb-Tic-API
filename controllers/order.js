@@ -65,6 +65,10 @@ exports.tiket=(req,res)=>{
 exports.showall=(req,res)=>{
 
         payment.findAll({
+            order:
+            [
+                ['id','DESC']
+            ],
             include:
             [
                 {
