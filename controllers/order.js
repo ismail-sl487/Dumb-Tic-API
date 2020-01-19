@@ -4,7 +4,7 @@ const user = models.user
 const payment = models.payment
 
 exports.show = (req, res) => {
-    payment.findOne({
+    payment.findAll({
     
         where: { payment_creatby_id: req.params.id },
         include: [
