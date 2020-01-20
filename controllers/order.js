@@ -4,6 +4,9 @@ const user = models.user
 const payment = models.payment
 const {Op} = require('sequelize')
 
+
+// Query all by status
+
 exports.show = (req, res) => {
     payment.findAll({
     
@@ -11,6 +14,7 @@ exports.show = (req, res) => {
         {
             [Op.and]:[{payment_creatby_id: req.params.id },{status:"Confirm"}]
         },
+
         include: [
                     {
                         model: user,
@@ -28,14 +32,21 @@ exports.show = (req, res) => {
     .catch(err => res.send(err))
 }
 
+// Buy Event
+
 exports.buy=(req,res)=>{
     payment.create(req.body).then(payment=>{
+
         res.send({
             message :"success",
             payment
         })
     })
 }
+
+
+// Patch Confirm to Pending
+
 exports.update=(req,res)=>{
     payment.update(
         req.body,
@@ -47,9 +58,13 @@ exports.update=(req,res)=>{
         })
     })
 }
+
+
+// My Ticket
+
 exports.tiket=(req,res)=>{
     payment.findAll({
-        where:{status:'pending'},
+        where:{status:'Pending'},
         include:
         [
             {
@@ -63,6 +78,9 @@ exports.tiket=(req,res)=>{
         ]
     }).then(payment=>res.send(payment)).catch(err=>res.send(err))
 }
+
+
+
 
 // see database 
 
