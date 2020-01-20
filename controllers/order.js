@@ -64,7 +64,9 @@ exports.update=(req,res)=>{
 
 exports.tiket=(req,res)=>{
     payment.findAll({
-        where:{status:'Pending'},
+        where:{
+            [Op.and]:[{status:'Pending'},{payment_creatby_id: req.params.id}]
+        },
         include:
         [
             {

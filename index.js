@@ -58,7 +58,7 @@ app.group("/api/v1", (router) => {
     router.patch('/comfirm/:id',OrderBuyController.update)
 
     //TICKET
-    router.get('/myTicket',OrderBuyController.tiket)
+    router.get('/myTicket/:id',OrderBuyController.tiket)
 
     
 })
