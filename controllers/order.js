@@ -2,11 +2,15 @@ const models = require('../models')
 const event = models.event
 const user = models.user
 const payment = models.payment
+const {Op} = require('sequelize')
 
 exports.show = (req, res) => {
     payment.findAll({
     
-        where: { payment_creatby_id: req.params.id },
+        where: 
+        {
+            [Op.and]:[{payment_creatby_id: req.params.id },{status:"Confirm"}]
+        },
         include: [
                     {
                         model: user,
