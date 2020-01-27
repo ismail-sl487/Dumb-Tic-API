@@ -5,7 +5,6 @@ const event = models.event
 exports.index = (req, res) => {
     profile.findAll({
         include: [{
-
             model: event,
             as:"createBy"
         }]

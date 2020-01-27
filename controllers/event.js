@@ -8,9 +8,10 @@ const category =models.category
 const payment =models.payment
 // Date filter Now
 const today = moment().startOf('day');
-const tommorow = moment().add(1, 'days');
-const lastdayTommorw = moment(tommorow).endOf('day');
 var lastday = moment(today).endOf('day');
+const tommorow = moment().add(1, 'days')
+const lastdayTommorw = moment(tommorow).endOf('day');
+
 
 exports.index = (req, res) => {
     event.findAll({
@@ -50,8 +51,8 @@ exports.tomorrow=(req,res)=>{
         {
             start_time:
             {
-                [Op.gt]:tommorow.toDate(),
-                [Op.lt]:lastdayTommorw.toDate()
+                [Op.gte]: tommorow.toDate(),
+                [Op.lt]: lastdayTommorw.toDate()
             }
         }
     }).then(event=>res.send(event)).catch((error) => res.status(400).send(error));

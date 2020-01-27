@@ -2,6 +2,7 @@ const models = require('../models')
 const categories = models.category
 const events = models.event
 const user = models.user
+
 exports.index = (req, res) => {
     categories.findAll().then(category=>
         res.send(category)).catch((error) => res.status(400).send(error));
